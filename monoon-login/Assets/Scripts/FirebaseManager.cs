@@ -153,12 +153,19 @@ public class FirebaseManager : MonoBehaviour
 
     public void LoginButton()
     {
-        StartCoroutine(LoginLogic(loginEmail.text, loginPassword.text));
+        StartCoroutine(LoginLogic(loginEmail.text+"@sookmyung.ac.kr", loginPassword.text));
     }
+
+
+    public void LogoutButton()
+    {
+        auth.SignOut();
+    }
+
 
     public void RegisterButton()
     {
-        StartCoroutine(RegisterLogic(registerUsername.text, registerEmail.text, registerPassword.text, registerConfirmPassword.text));
+        StartCoroutine(RegisterLogic(registerUsername.text, registerEmail.text+"@sookmyung.ac.kr", registerPassword.text, registerConfirmPassword.text));
     }
 
     private IEnumerator LoginLogic(string _email, string _password)
@@ -174,7 +181,7 @@ public class FirebaseManager : MonoBehaviour
             FirebaseException firebaseException = (FirebaseException)loginTask.Exception.GetBaseException();
             AuthError error = (AuthError)firebaseException.ErrorCode;
 
-            string output = "알 수 없는 에러가 발생했습니다. 다시 시도해 주세요.";
+            string output = "알 수 없는 오류가 발생했습니다.\n다시 시도해 주세요.";
 
             switch (error)
             {
@@ -191,7 +198,7 @@ public class FirebaseManager : MonoBehaviour
                     output = "비밀번호를 다시 입력해 주세요.";
                     break;
                 case AuthError.UserNotFound:
-                    output = " 등록되지 않은 사용자 입니다.";
+                    output = "등록되지 않은 사용자 입니다.";
                     break;
             }
             loginOutputText.text = output;
@@ -216,6 +223,7 @@ public class FirebaseManager : MonoBehaviour
 
     private IEnumerator RegisterLogic(string _username, string _email, string _password, string _confirmPassword)
     {
+        
         if(_username == "")
         {
             registerOutputText.text = "이름을 입력해 주세요.";
@@ -313,6 +321,7 @@ public class FirebaseManager : MonoBehaviour
         //유저 있는지 먼저 확인-> 기다림
         if(user != null)
         {
+            
             var emailTask = user.SendEmailVerificationAsync();
 
             yield return new WaitUntil(predicate: () => emailTask.IsCompleted);
@@ -323,18 +332,18 @@ public class FirebaseManager : MonoBehaviour
                 FirebaseException firebaseException = (FirebaseException)emailTask.Exception.GetBaseException();
                 AuthError error = (AuthError)firebaseException.ErrorCode;
 
-                string output = "Unknown Error, Try Again!";
+                string output = "알 수 없는 오류가 발생했습니다. 다시 시도해 주세요!";
 
                 switch(error)
                 {
                     case AuthError.Cancelled:
-                        output = "verificiation Task was Canelled.";
+                        output = "인증이 취소되었습니다.";
                         break;
                     case AuthError.InvalidRecipientEmail:
-                        output = "Invalid Email.";
+                        output = "확인되지 않는 이메일입니다.";
                         break;
                     case AuthError.TooManyRequests:
-                        output = "Too many requests.";
+                        output = "이미 메일이 발송되었습니다.";
                         break;
                 }
                 AUIManager.instance.AwaitVerification(false, user.Email, output);
