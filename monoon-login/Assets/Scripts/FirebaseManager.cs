@@ -160,6 +160,7 @@ public class FirebaseManager : MonoBehaviour
     public void LogoutButton()
     {
         auth.SignOut();
+        AUIManager.instance.LoginScreen();
     }
 
 
@@ -357,4 +358,6 @@ public class FirebaseManager : MonoBehaviour
 
         }
     }
+
+
 }

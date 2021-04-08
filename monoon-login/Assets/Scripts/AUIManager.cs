@@ -61,11 +61,11 @@ public class AUIManager : MonoBehaviour
         verifyEmailUI.SetActive(true);
         if(_emailSent)
         {
-            verifyEmailText.text = $"이메일을 보냈습니다. \r메일함을 확인해 주세요.\r{_email}";
+            verifyEmailText.text = $"이메일을 보냈습니다. \n메일함을 확인해 주세요.\n{_email}";
         }
         else
         {
-            verifyEmailText.text = $"이메일이 전송되지 않았습니다.\r:{_output}\r메일함을 확인해 주세요.{_email}";
+            verifyEmailText.text = $"이메일이 전송되지 않았습니다.\n:{_output}\n메일함을 확인해 주세요.{_email}";
         }
     }
 }
