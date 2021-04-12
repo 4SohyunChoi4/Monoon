@@ -111,7 +111,7 @@ public class FirebaseManager : MonoBehaviour
             //todo: Email verification
             if (user.IsEmailVerified)
             {
-            GameManager.instance.ChangeScene(1);
+                GameManager.instance.ChangeScene(1);
             }
             else
             {
@@ -154,13 +154,6 @@ public class FirebaseManager : MonoBehaviour
     public void LoginButton()
     {
         StartCoroutine(LoginLogic(loginEmail.text+"@sookmyung.ac.kr", loginPassword.text));
-    }
-
-
-    public void LogoutButton()
-    {
-        auth.SignOut();
-        AUIManager.instance.LoginScreen();
     }
 
 
