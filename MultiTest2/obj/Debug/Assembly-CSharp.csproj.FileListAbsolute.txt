@@ -1,0 +1,2 @@
+C:\Users\KYJ\Desktop\MultiTest2\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\KYJ\Desktop\MultiTest2\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
