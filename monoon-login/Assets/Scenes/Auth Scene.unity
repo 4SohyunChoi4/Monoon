@@ -912,7 +912,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 707312178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00b76d0ab381842f6862470ad1e54e2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 65f0258d91f33e5478249c5230d63740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &844350488
@@ -1075,7 +1075,7 @@ GameObject:
   - component: {fileID: 1087213142}
   - component: {fileID: 1087213141}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: AuthGameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1087213140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9c301ab37f98c84f91e15bc9ebbd597, type: 3}
+  m_Script: {fileID: 11500000, guid: 63008ed81550e6f45a46150b07d43764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1087213142

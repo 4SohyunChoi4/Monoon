@@ -111,7 +111,7 @@ public class FirebaseManager : MonoBehaviour
             //todo: Email verification
             if (user.IsEmailVerified)
             {
-                GameManager.instance.ChangeScene(1);
+                AuthGameManager.instance.ChangeScene(2);
             }
             else
             {
@@ -203,7 +203,7 @@ public class FirebaseManager : MonoBehaviour
             if (user.IsEmailVerified)
             {
                 yield return new WaitForSeconds(1f);
-                GameManager.instance.ChangeScene(1);
+                AuthGameManager.instance.ChangeScene(2);
             }
             else{
                     //todo: send verification email

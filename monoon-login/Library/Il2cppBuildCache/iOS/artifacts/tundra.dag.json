@@ -1,0 +1,138 @@
+{
+  "Nodes": [
+    {
+      "Annotation": "all_tundra_nodes",
+      "Action": "",
+      "Inputs": [],
+      "Outputs": [],
+      "TargetDirectories": [],
+      "PassIndex": 0,
+      "Deps": [
+        1,
+        2
+      ],
+      "OverwriteOutputs": true,
+      "FrontendResponseFiles": [],
+      "AllowUnexpectedOutput": true,
+      "AllowedOutputSubstrings": [],
+      "DebugActionIndex": 0
+    },
+    {
+      "Annotation": "Il2Cpp /Users/minjoo.h/monoon/Monoon/monoon-login/Library/Il2cppBuildCache/iOS/il2cppOutput",
+      "Action": "\"/Applications/Unity/Hub/Editor/2020.3.2f1/Unity.app/Contents/il2cpp/build/deploy/netcoreapp3.1/il2cpp\" --convert-to-cpp --emit-null-checks --enable-array-bounds-check --dotnetprofile=\"unityaot\" --additional-cpp=\"/Users/minjoo.h/monoon/Monoon/monoon-login/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" --incremental-g-c-time-slice=3 --avoid-dynamic-library-copy --profiler-report --map-file-parser=\"/Applications/Unity/Hub/Editor/2020.3.2f1/Unity.app/Contents/Tools/MapFileParser/MapFileParser\" --directory=\"/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed\" --generatedcppdir=\"/Users/minjoo.h/monoon/Monoon/monoon-login/Library/Il2cppBuildCache/iOS/il2cppOutput\"",
+      "Inputs": [
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/Firebase.App.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/Firebase.Auth.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/Firebase.Platform.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/Mono.Security.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/System.Configuration.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/System.Core.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/System.Xml.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/System.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/Unity.TextMeshPro.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.AnimationModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.AudioModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.CoreModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.GameCenterModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.GridModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.IMGUIModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.InputLegacyModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.Physics2DModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.PhysicsModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.SharedInternalsModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.SpriteShapeModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.TextCoreModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.TextRenderingModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.TilemapModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.UIModule.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/UnityEngine.dll",
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Temp/StagingArea/Data/Managed/mscorlib.dll"
+      ],
+      "Outputs": [],
+      "TargetDirectories": [
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Library/Il2cppBuildCache/iOS/il2cppOutput"
+      ],
+      "PassIndex": 0,
+      "Deps": [],
+      "OverwriteOutputs": false,
+      "FrontendResponseFiles": [],
+      "AllowUnexpectedOutput": true,
+      "AllowedOutputSubstrings": [],
+      "DebugActionIndex": 1
+    },
+    {
+      "Annotation": "Copy Additional C++ File /Users/minjoo.h/monoon/Monoon/monoon-login/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp",
+      "Action": "cp \"/Users/minjoo.h/monoon/Monoon/monoon-login/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" \"/Users/minjoo.h/monoon/Monoon/monoon-login/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp\" ",
+      "Inputs": [
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp"
+      ],
+      "Outputs": [
+        "/Users/minjoo.h/monoon/Monoon/monoon-login/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp"
+      ],
+      "TargetDirectories": [],
+      "PassIndex": 0,
+      "Deps": [
+        1
+      ],
+      "OverwriteOutputs": true,
+      "FrontendResponseFiles": [],
+      "AllowUnexpectedOutput": true,
+      "AllowedOutputSubstrings": [],
+      "DebugActionIndex": 2
+    }
+  ],
+  "FileSignatures": [
+    {
+      "File": "../../../../../../Library"
+    },
+    {
+      "File": "../../../Temp/StagingArea/Data/Managed"
+    },
+    {
+      "File": "artifacts/buildprogram/tundra_buildprogram.dag.json"
+    },
+    {
+      "File": "il2cpp_settings.json"
+    },
+    {
+      "File": "unitylinker_settings.json"
+    }
+  ],
+  "GlobSignatures": [
+    {
+      "Path": "../../../Temp/StagingArea/Data/Managed"
+    }
+  ],
+  "ContentDigestExtensions": [
+    ".rsp",
+    ".dll",
+    ".exe",
+    ".txt",
+    ".c",
+    ".cpp",
+    ".h",
+    ".cs",
+    ".hpp"
+  ],
+  "StructuredLogFileName": "artifacts/tundra.log.json",
+  "StateFileName": "artifacts/TundraBuildState.state",
+  "StateFileNameTmp": "artifacts/TundraBuildState.state.tmp",
+  "ScanCacheFileName": "artifacts/tundra.scancache",
+  "ScanCacheFileNameTmp": "artifacts/tundra.scancache.tmp",
+  "DigestCacheFileName": "artifacts/tundra.digestcache",
+  "DigestCacheFileNameTmp": "artifacts/tundra.digestcache.tmp",
+        "NamedNodes": {
+          "all_tundra_nodes": 0
+        }
+,  "DefaultNodes": [
+    0
+  ],
+  "SharedResources": [],
+  "Scanners": [],
+  "Identifier": "artifacts/tundra.dag.json",
+  "BuildTitle": "Bee",
+  "RelativePathToRoot": ".."
+}

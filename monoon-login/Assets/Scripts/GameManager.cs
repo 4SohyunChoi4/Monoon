@@ -1,27 +1,55 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public GameObject PlayerPrefab;
+    private bool Off = false;
 
-    //single tone loop? and change scene method
+    private Text ChatLog;
 
-    private void Awake()
+
+    public void Awake()
     {
-        if(instance == null)
+        ChatLog = GameObject.Find("ChatLog").GetComponent<Text>();
+        SpawnPlayer();
+    }
+
+    private void Update()
+    {
+    }
+
+    public void SpawnPlayer()
+    {
+        //float randomValue = Random.Range(-1f, 1f);
+
+        if (PlayerPrefab == null)
         {
-            instance = this;
+            Debug.LogError("playerprfab¿Ã null");
         }
-        else if(instance != this)
+
+        else
         {
-            Destroy(gameObject);
+            int randomValue = Random.Range(-5, 5);
+            PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector3(randomValue, 1, 0), Quaternion.Euler(new Vector3(0, 0, 0)), 0);
         }
     }
 
-    public void ChangeScene(int _sceneIndex)
+    public void LeaveRoom()
     {
-        SceneManager.LoadSceneAsync(_sceneIndex);
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel("MainMenu");
+    }
+
+    private void OnPhotonPlayerConnected(PhotonPlayer player)
+    {
+        ChatLog.text += "\n" + "<color=blue>" + player.name + " ¥‘¿Ã µÈæÓø¿ºÃΩ¿¥œ¥Ÿ." + "</color>";
+    }
+
+    private void OnPhotonPlayerDisconnected(PhotonPlayer player)
+    {
+        ChatLog.text += "\n" + "<color=red>" + player.name + " ¥‘¿Ã ≥™∞°ºÃΩ¿¥œ¥Ÿ." + "</color>";
     }
 }
