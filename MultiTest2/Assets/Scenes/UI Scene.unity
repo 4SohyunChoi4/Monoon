@@ -227,7 +227,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 98515702}
-  - component: {fileID: 98515703}
   m_Layer: 5
   m_Name: SafeArea
   m_TagString: Untagged
@@ -254,18 +253,6 @@ RectTransform:
   m_AnchoredPosition: {x: 360, y: 540}
   m_SizeDelta: {x: 720, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &98515703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 98515701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65f0258d91f33e5478249c5230d63740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &231803449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1011,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1096,6 +1084,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 35.97, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2bf2b13356e7b64da4eb0aaeef6c537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: {fileID: 1843811363}
 --- !u!1 &1454843478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,8 +1108,9 @@ GameObject:
   - component: {fileID: 1454843479}
   - component: {fileID: 1454843481}
   - component: {fileID: 1454843480}
+  - component: {fileID: 1454843482}
   m_Layer: 5
-  m_Name: Weather2
+  m_Name: Weather
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1172,6 +1174,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454843478}
   m_CullTransparentMesh: 1
+--- !u!114 &1454843482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454843478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970cf62c71f9a4d4a97048c493ce466a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeatherText: {fileID: 231803451}
+  minutesBetweenUpdate: 216000
+  weatherImg: {fileID: 1454843480}
 --- !u!1 &1532097402
 GameObject:
   m_ObjectHideFlags: 0
