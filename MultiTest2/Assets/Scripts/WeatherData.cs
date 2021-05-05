@@ -9,16 +9,16 @@ public class WeatherData : MonoBehaviour
 {//온도(몇도인지), 이미지 필요함
     public Text WeatherText;
     private float timer;
-    public float minutesBetweenUpdate = 60*60*60;
+    public float minutesBetweenUpdate = 60 * 60 * 60;
     private string cityID = "1835848"; //서울 지억번호
     private string API_key = "28343fd6de7357fb11e65e338795a68c";
     string iconNumb = "";
-    public Image weatherImg;
+    public RawImage weatherImg;
     private Sprite weatherSprite;
     //30cbc0572f7218a81d8d7056865ae959
     private void Start()
     {
-        Debug.Log("weatherData 시작");
+        weatherImg.texture = Texture2D.blackTexture;
         GetWeatherData();
     }
     /*void Update()
@@ -58,21 +58,21 @@ public class WeatherData : MonoBehaviour
                 ParseJson(www.downloadHandler.text);
             }
         }
-/*        using (UnityWebRequest tempImg = UnityWebRequest.Get("http://openweathermap.org/img/wn/+" + iconNumb + "@2x.png"))
+        using (UnityWebRequest iconwww = UnityWebRequestTexture.GetTexture("http://openweathermap.org/img/wn/" + iconNumb + "@2x.png"))
         {
-            yield return tempImg.SendWebRequest();
-            if (tempImg.isNetworkError || tempImg.isHttpError)
+            yield return iconwww.SendWebRequest();
+            if (iconwww.isNetworkError || iconwww.isHttpError)
             {
-                Debug.LogError(tempImg.error);
+                Debug.LogError(iconwww.error);
                 yield break;
             }
             else
             {
-                Debug.Log("성공");
-                weatherImg.sprite = weatherSprite;
+                weatherImg.texture = DownloadHandlerTexture.GetContent(iconwww);
+                weatherImg.texture.filterMode = FilterMode.Point;
             }
+
         }
-        */
     }
 
     WeatherStatus ParseJson (string json)
@@ -94,12 +94,6 @@ public class WeatherData : MonoBehaviour
         {
             Debug.Log(e.StackTrace);
         }
-        Debug.Log("Temp: " + weather.Celsius());
-        Debug.Log(weather.weatherId);
-        Debug.Log(weather.main);
-        Debug.Log(weather.description);
-        Debug.Log(weather.icon);
-
         WeatherText.text = weather.Celsius()+ "˚C";
 
         return weather;
