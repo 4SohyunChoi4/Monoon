@@ -10,7 +10,7 @@ public class WeatherData : MonoBehaviour
     public Text WeatherText;
     private float timer;
     public float minutesBetweenUpdate = 60 * 60 * 60;
-    private string cityID = "1835848"; //���� �����ȣ
+    private string cityID = "1835848"; //���� ������?
     private string API_key = "28343fd6de7357fb11e65e338795a68c";
     string iconNumb = "";
     public RawImage weatherImg;
@@ -94,7 +94,7 @@ public class WeatherData : MonoBehaviour
         {
             Debug.Log(e.StackTrace);
         }
-        WeatherText.text = weather.Celsius()+ "˚C";
+        WeatherText.text = weather.Celsius()+ "?C";
 
         return weather;
     }

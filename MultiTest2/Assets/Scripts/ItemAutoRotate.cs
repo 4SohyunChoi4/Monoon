@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemAutoRotate : MonoBehaviour
 {
-    public float rotateSpeed;
+    public float rotateSpeed = 30;
 
     void Update()
     {
