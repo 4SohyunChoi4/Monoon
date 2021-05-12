@@ -79,7 +79,7 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    //인증이 설정된 직후 파이어베이스 호출 확인한담에 자동로그인 초기화
+    //?�증???�정??직후 ?�이?�베?�스 ?�출 ?�인?�담???�동로그??초기??
     private void InitializeFirebase()
     {
         auth = FirebaseAuth.DefaultInstance;
@@ -91,15 +91,15 @@ public class FirebaseManager : MonoBehaviour
 
     private IEnumerator CheckAutoLogin()
     {
-        //왜 넣는지 모르지만 안넣으면 에러날 때 있음
+        //???�는지 모르지�??�넣?�면 ?�러?????�음
         yield return new WaitForEndOfFrame();
 
-        //기다린 후에 유저가 있으면 리로드한다 동기화한다.
+        //기다�??�에 ?��?가 ?�으�?리로?�한???�기?�한??
         if(user != null)
         {
             var reloadUserTask = user.ReloadAsync();
 
-            //완료될 때 까지 기다린다(자동로그인이)
+            //?�료????까�? 기다린다(?�동로그?�이)
             yield return new WaitUntil(predicate: () => reloadUserTask.IsCompleted);
 
             AutoLogin();
@@ -183,30 +183,30 @@ public class FirebaseManager : MonoBehaviour
             FirebaseException firebaseException = (FirebaseException)loginTask.Exception.GetBaseException();
             AuthError error = (AuthError)firebaseException.ErrorCode;
 
-            string output = "알 수 없는 오류가 발생했습니다.\n다시 시도해 주세요.";
+            string output = "?????�는 ?�류가 발생?�습?�다.\n?�시 ?�도??주세??";
 
             switch (error)
             {
                 case AuthError.MissingEmail:
-                    output = "이메일을 입력해 주세요.";
+                    output = "?�메?�을 ?�력??주세??";
                     break;
                 case  AuthError.MissingPassword:
-                    output = "비밀번호를 입력해 주세요.";
+                    output = "비�?번호�??�력??주세??";
                     break;
                 case  AuthError.InvalidEmail:
-                    output = "등록되지 않은 이메일입니다.";
+                    output = "?�록?��? ?��? ?�메?�입?�다.";
                     break;
                 case  AuthError.WrongPassword:
-                    output = "비밀번호를 다시 입력해 주세요.";
+                    output = "비�?번호�??�시 ?�력??주세??";
                     break;
                 case AuthError.UserNotFound:
-                    output = "등록되지 않은 사용자 입니다.";
+                    output = "?�록?��? ?��? ?�용???�니??";
                     break;
             }
             loginOutputText.text = output;
 
         }
-        //문제 없으면 아래 진행
+        //문제 ?�으�??�래 진행
         else{
             if (user.IsEmailVerified)
             {
@@ -228,11 +228,11 @@ public class FirebaseManager : MonoBehaviour
         
         if(_username == "")
         {
-            registerOutputText.text = "이름을 입력해 주세요.";
+            registerOutputText.text = "?�름???�력??주세??";
         }
         else if(_password != _confirmPassword)
         {
-            registerOutputText.text = "비밀번호가 일치하지 않습니다.";
+            registerOutputText.text = "비�?번호가 ?�치?��? ?�습?�다.";
         }
         //ok
         else{
@@ -244,30 +244,30 @@ public class FirebaseManager : MonoBehaviour
             {
                 FirebaseException firebaseException = (FirebaseException)registerTask.Exception.GetBaseException();
                 AuthError error = (AuthError)firebaseException.ErrorCode;
-                string output = "알 수 없는 오류가 발생했습니다. 다시 시도해 주세요.";
+                string output = "?????�는 ?�류가 발생?�습?�다. ?�시 ?�도??주세??";
 
                 switch (error)
                 {
                     case AuthError.InvalidEmail:
-                        output = "잘못된 이메일을 입력하셨습니다.";
+                        output = "?�못???�메?�을 ?�력?�셨?�니??";
                         break;
                     case AuthError.EmailAlreadyInUse:
-                        output = "이미 사용중인 이메일입니다.";
+                        output = "?��? ?�용중인 ?�메?�입?�다.";
                         break;
                     case AuthError.WeakPassword:
-                        output = "보안에 취약한 비밀번호입니다.";
+                        output = "보안??취약??비�?번호?�니??";
                         break;
                     case AuthError.MissingEmail:
-                        output = "이메일을 입력해 주세요.";
+                        output = "?�메?�을 ?�력??주세??";
                         break;
                     case AuthError.MissingPassword:
-                        output = "비밀번호를 입력해 주세요.";
+                        output = "비�?번호�??�력??주세??";
                         break;
                 }
                 registerOutputText.text = output;
             }
 
-            //위의 정보를 옳게 입력한 경우 닉네임 설정하기
+            //?�의 ?�보�??�게 ?�력??경우 ?�네???�정?�기
             else
             {
                 UserProfile profile = new UserProfile
@@ -283,14 +283,14 @@ public class FirebaseManager : MonoBehaviour
                 yield return new WaitUntil(predicate: () => defaultUserTask.IsCompleted);
                 
 
-                //유저정보에 어떤 문제가 있으면
+                //?��??�보???�떤 문제가 ?�으�?
                 if(defaultUserTask.Exception != null)
                 {
-                    //가장 먼저, 유저프로필을 삭제한다.
+                    //가??먼�?, ?��??�로?�을 ??��?�다.
                     user.DeleteAsync();
                     FirebaseException firebaseException = (FirebaseException)defaultUserTask.Exception.GetBaseException();
                     AuthError error = (AuthError)firebaseException.ErrorCode;
-                    string output = "알 수 없는 오류가 발생했습니다. 다시 시도해 주세요.";
+                    string output = "?????�는 ?�류가 발생?�습?�다. ?�시 ?�도??주세??";
 
                     switch (error)
                     {
@@ -298,13 +298,13 @@ public class FirebaseManager : MonoBehaviour
                             output = "Update User Canceled.";
                             break;
                         case AuthError.SessionExpired:
-                            output = "세션이 만료되었습니다.";
+                            output = "?�션??만료?�었?�니??";
                             break;
                     }
                     registerOutputText.text = output;
                 }
 
-                //유저 정보 불러오기에 문제가 없으면
+                //?��? ?�보 불러?�기??문제가 ?�으�?
                 else
                 {
                     Debug.Log($"Firebase User Created Successfully: {user.DisplayName} ({user.UserId})");
@@ -317,10 +317,10 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    //이메일 인증 만들기
+    //?�메???�증 만들�?
     private IEnumerator SendVerificationEmail()
     {
-        //유저 있는지 먼저 확인-> 기다림
+        //?��? ?�는지 먼�? ?�인-> 기다�?
         if(user != null)
         {
             
@@ -328,31 +328,31 @@ public class FirebaseManager : MonoBehaviour
 
             yield return new WaitUntil(predicate: () => emailTask.IsCompleted);
 
-            //오류있으면
+            //?�류?�으�?
             if(emailTask.Exception != null)
             {
                 FirebaseException firebaseException = (FirebaseException)emailTask.Exception.GetBaseException();
                 AuthError error = (AuthError)firebaseException.ErrorCode;
 
-                string output = "알 수 없는 오류가 발생했습니다. 다시 시도해 주세요!";
+                string output = "?????�는 ?�류가 발생?�습?�다. ?�시 ?�도??주세??";
 
                 switch(error)
                 {
                     case AuthError.Cancelled:
-                        output = "인증이 취소되었습니다.";
+                        output = "?�증??취소?�었?�니??";
                         break;
                     case AuthError.InvalidRecipientEmail:
-                        output = "확인되지 않는 이메일입니다.";
+                        output = "?�인?��? ?�는 ?�메?�입?�다.";
                         break;
                     case AuthError.TooManyRequests:
-                        output = "이미 메일이 발송되었습니다.";
+                        output = "?��? 메일??발송?�었?�니??";
                         break;
                 }
                 AUIManager.instance.AwaitVerification(false, user.Email, output);
             }
             else{
                 AUIManager.instance.AwaitVerification(true, user.Email, null);
-                //output표시안됨. true=이메일 보내졌음
+                //output?�시?�됨. true=?�메??보내졌음
                 Debug.Log("Email sent Successfully");
             }
         }
@@ -365,7 +365,7 @@ public class FirebaseManager : MonoBehaviour
     {
         if(_email == "@sookmyung.ac.kr")
         {
-            resetPWOutputText.text = "숙명 이메일의 아이디를 입력해 주세요.";
+            resetPWOutputText.text = "?�명 ?�메?�의 ?�이?��? ?�력??주세??";
         }
         
 
@@ -380,36 +380,36 @@ public class FirebaseManager : MonoBehaviour
                 
             } else if (resetTask.IsFaulted) {
                 Debug.Log("unregisterd");
-                resetPWOutputText.text = "등록되지 않은 계정입니다.\n숙명 이메일 계정을 확인해 주세요.";
+                resetPWOutputText.text = "?�록?��? ?��? 계정?�니??\n?�명 ?�메??계정???�인??주세??";
             } else if (resetTask.IsCompleted) {
                 resetPWOutputText.text = "";
                 AUIManager.instance.AwaitVerification(true, _email, null);
                 Debug.Log("Reset passowrd Email sent Successfully");
             }
             
-            //등록된 이메일 아닐 경우 IsFaulted 반환
+            //?�록???�메???�닐 경우 IsFaulted 반환
             //
             /*
             if(resetTask.Exception != null)
             {
                 
-                if(resetTask.IsFaulted) resetPWOutputText.text = "등록되지 않은 계정입니다.";
+                if(resetTask.IsFaulted) resetPWOutputText.text = "?�록?��? ?��? 계정?�니??";
 
                 FirebaseException firebaseException = (FirebaseException)resetTask.Exception.GetBaseException();
                 AuthError error = (AuthError)firebaseException.ErrorCode;
 
-                string output = "알 수 없는 오류가 발생했습니다. 다시 시도해 주세요!";
+                string output = "?????�는 ?�류가 발생?�습?�다. ?�시 ?�도??주세??";
                 
                 switch(error)
                 {
                     case AuthError.Cancelled:
-                        output = "인증이 취소되었습니다.";
+                        output = "?�증??취소?�었?�니??";
                         break;
                     case AuthError.EmailAlreadyInUse:
-                        output = "확인되지 않는 이메일입니다.";
+                        output = "?�인?��? ?�는 ?�메?�입?�다.";
                         break;
                     case AuthError.TooManyRequests:
-                        output = "이미 메일이 발송되었습니다.";
+                        output = "?��? 메일??발송?�었?�니??";
                         break;
                 }
 

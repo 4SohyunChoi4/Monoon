@@ -48,19 +48,20 @@ public class MenuController : MonoBehaviour
 
     public void CreateGame()
     {
-        PhotonNetwork.CreateRoom("±§¿Â", new RoomOptions() { maxPlayers = 5 }, null);
+        PhotonNetwork.CreateRoom("Myung-shin", new RoomOptions() { MaxPlayers = 5 }, null);
     }
 
     public void JoinGame()
     {
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.maxPlayers = 5;
-        PhotonNetwork.JoinOrCreateRoom("±§¿Â", roomOptions, TypedLobby.Default);
+        roomOptions.MaxPlayers = 5;
+        PhotonNetwork.JoinOrCreateRoom("Myung-shin", roomOptions, TypedLobby.Default);
     }
 
     private void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("MainGame");
+        Debug.Log("Connected Myung-shin");
 
     }
 }

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "432029866828",
+    "project_id": "monoonsong-05",
+    "firebase_url" : "https://monoonsong-05-default-rtdb.firebaseio.com/",
+    "storage_bucket": "monoonsong-05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432029866828:android:9426934a3b0a6821664de9",
+        "android_client_info": {
+          "package_name": "con.monoon.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432029866828-6chrrvll171des9aki2voubgb2o347sp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUVFXqmBtIKz4b6C4i9IcQpUVcGF8CvT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432029866828-6chrrvll171des9aki2voubgb2o347sp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "432029866828-or4bssb7iadtj9tajqsc6bdo3jadsjd7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "con.monoon.login"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
