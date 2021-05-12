@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-
 public class MenuController : MonoBehaviour
 {
     [SerializeField] private string VersionName = "0.1";
@@ -75,7 +74,7 @@ public class MenuController : MonoBehaviour
     public void JoinGame()
     {
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 5;
+        roomOptions.maxPlayers = 5;
         if (buildingName.Equals("명신관") || buildingName.Equals("진리관"))
         {
             PhotonNetwork.JoinOrCreateRoom(buildingName, roomOptions, TypedLobby.Default);
@@ -91,7 +90,7 @@ public class MenuController : MonoBehaviour
         activeChatroomButton = false;
     }
 
-    public void Signout()  //로그아웃
+        public void Signout()  //로그아웃
     {
         Debug.Log($"Click Signed Out");
         FirebaseManager.instance.auth.SignOut();

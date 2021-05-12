@@ -94,7 +94,7 @@ public class WeatherData : MonoBehaviour
         {
             Debug.Log(e.StackTrace);
         }
-        WeatherText.text = weather.Celsius()+ "?C";
+        WeatherText.text = weather.Celsius()+ " ¢ªC";
 
         return weather;
     }
