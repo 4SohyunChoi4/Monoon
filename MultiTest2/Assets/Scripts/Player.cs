@@ -23,7 +23,16 @@ public class Player : MonoBehaviour
 
     private bool isMove;
     private Vector3 destination;
+    private Vector3 direction;
     //
+    public GameObject Expression;
+    private bool IsExpression;
+
+    Button Hi;
+    Button Surprise;
+    Button Sit;
+
+    string collisionDetect;
 
     private void Awake()
     {
@@ -40,12 +49,23 @@ public class Player : MonoBehaviour
             PlayerNameText.text = photonView.owner.name;
             Destroy(rb);
         }
-        
+
         // 나경님 코드
         camera = Camera.main;
         animator = GetComponent<Animator>();
         animator.applyRootMotion = true;
-        
+        IsExpression = false;
+
+        //rb = GetComponent<Rigidbody>();
+
+        Hi = transform.Find("Canvas").transform.Find("Expression").transform.Find("HiButton").GetComponent<Button>();
+        Surprise = transform.Find("Canvas").transform.Find("Expression").transform.Find("SurpriseButton").GetComponent<Button>();
+        Sit = transform.Find("Canvas").transform.Find("Expression").transform.Find("SitButton").GetComponent<Button>();
+
+        Hi.onClick.AddListener(ClickHiButton);
+        Surprise.onClick.AddListener(ClickSurpriseButton);
+        Sit.onClick.AddListener(ClickSitButton);
+
     }
 
     private void Update()
@@ -62,9 +82,25 @@ public class Player : MonoBehaviour
                     if (!EventSystem.current.IsPointerOverGameObject()) // UI 터치 시 이동 방지
                     {
                         if (hit.collider.tag == "road") // road라는 tag를 가진 물체를 클릭해야 클릭 위치를 목적지로 인식
+                        {
                             SetDestination(hit.point);
+                            /*if (collisionDetect != hit.collider.tag)
+                            {
+                                SetDestination(hit.point);
+                                transform.position = hit.point;
+                            }*/
+                        }
                     }
-
+                    if (hit.collider.gameObject == gameObject && !IsExpression) // 내 캐릭터를 클릭하고 표정창이 떠 있는 상태가 아니라면
+                    {
+                        Expression.SetActive(true);
+                        IsExpression = true;
+                    }
+                    else if (hit.collider.gameObject == gameObject && IsExpression) // 내 캐릭터를 클릭하고 표정창이 떠 있는 상태라면
+                    {
+                        Expression.SetActive(false);
+                        IsExpression = false;
+                    }
                 }
             }
             Move();
@@ -74,6 +110,9 @@ public class Player : MonoBehaviour
     private void SetDestination(Vector3 dest)
     {
         destination = dest;
+        animator.SetBool("isSit", false);
+        animator.SetBool("Hi", false);
+        animator.SetBool("Surprise", false); // 모션 해제
         isMove = true;
         animator.SetBool("isMove", true);
     }
@@ -85,6 +124,7 @@ public class Player : MonoBehaviour
             var dir = destination - transform.position;
             transform.forward = dir;
             transform.position += dir.normalized * Time.deltaTime * 5f;
+            direction = dir;
         }
 
         if (Vector3.Distance(transform.position, destination) <= 0.1f)
@@ -94,52 +134,35 @@ public class Player : MonoBehaviour
         }
     }
 
-    /*private void CheckInput()
+    public void OnCollisionEnter(Collision collision)
     {
-
-        if (Input.GetKey(KeyCode.UpArrow))
+        collisionDetect = collision.gameObject.tag;
+        if (collision.gameObject.tag == "sofa")
         {
-            transform.Translate(Vector3.down * MoveSpeed * Time.deltaTime);
+            Debug.Log("의자 충돌!");
+            animator.SetBool("isSit", true); //앉는 모션 출력
+            isMove = false;
         }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Translate(Vector3.up * MoveSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Translate(Vector3.left * MoveSpeed * Time.deltaTime);
-        }
+    }
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Translate(Vector3.right * MoveSpeed * Time.deltaTime);
-        }
-
-
-
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
-        {
-            anim.SetBool("IsRunning", true);
-        }
-        else
-        {
-            anim.SetBool("IsRunning", false);
-        }
-    }*/
-
-    /*private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    public void ClickHiButton()
     {
-        if (stream.isWriting)
-        {
-            stream.SendNext(transform.position);
-            stream.SendNext(transform.rotation);
-        }
-        else if (stream.isReading)
-        {
-            transform.position = (Vector3)stream.ReceiveNext();
-            transform.rotation = (Quaternion)stream.ReceiveNext();
-        }
-    }*/
+        animator.SetBool("Hi", true);
+        isMove = false;
+        Expression.SetActive(false);
+    }
+    public void ClickSurpriseButton()
+    {
+        animator.SetBool("Surprise", true);
+        isMove = false;
+        Expression.SetActive(false);
+    }
+    public void ClickSitButton()
+    {
+        animator.SetBool("isSit", true);
+        isMove = false;
+        Expression.SetActive(false);
+    }
 }
 
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TextLookCamera : MonoBehaviour
 {
-
     private Transform mainCameraTransform; // 닉네임, 말풍선이 따라올 카메라 위치
     private Camera cameraToLookAt;
 
@@ -19,5 +18,4 @@ public class TextLookCamera : MonoBehaviour
         transform.LookAt(transform.position + cameraToLookAt.transform.rotation * Vector3.forward, cameraToLookAt.transform.rotation * Vector3.up);
 
     }
-
 }

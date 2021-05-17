@@ -3,6 +3,7 @@ using System.Collections;
 using Firebase;
 using Firebase.Auth;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -119,7 +120,7 @@ public class FirebaseManager : MonoBehaviour
             //todo: Email verification
             if (user.IsEmailVerified)
             {
-                AuthGameManager.instance.ChangeScene(1);
+                SceneManager.LoadScene("UI Scene");
             }
             else
             {
@@ -211,7 +212,7 @@ public class FirebaseManager : MonoBehaviour
             if (user.IsEmailVerified)
             {
                 yield return new WaitForSeconds(1f);
-                AuthGameManager.instance.ChangeScene(2);
+                SceneManager.LoadScene("UI Scene");
             }
             else{
                     //todo: send verification email

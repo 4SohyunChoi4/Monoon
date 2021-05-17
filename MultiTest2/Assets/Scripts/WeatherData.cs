@@ -21,7 +21,7 @@ public class WeatherData : MonoBehaviour
         weatherImg.texture = Texture2D.blackTexture;
         GetWeatherData();
     }
-    void Update() // 60분마다 한번씩 재생되도록
+    /*void Update()
     {
         if (timer <= 0)
         {
@@ -33,7 +33,7 @@ public class WeatherData : MonoBehaviour
             timer -= Time.deltaTime;
         }
     }
-    
+    */
     public void GetWeatherData()
     {
         StartCoroutine(GetCoroutine());

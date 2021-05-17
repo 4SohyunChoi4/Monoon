@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        ExGameManager.instance.MyungsinChatRoom();
     }
 
     public void SpawnPlayer()
@@ -28,7 +27,7 @@ public class GameManager : MonoBehaviour
 
         if (PlayerPrefab == null)
         {
-            Debug.LogError("playerpr? null");
+            Debug.LogError("playerprfab¿Ã null");
         }
 
         else
@@ -40,18 +39,17 @@ public class GameManager : MonoBehaviour
 
     public void LeaveRoom()
     {
-        
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel("UI Scene");
     }
 
     private void OnPhotonPlayerConnected(PhotonPlayer player)
     {
-        ChatLog.text += "\n" + "<color=blue>" + player.name + "?? ???????." + "</color>";
+        ChatLog.text += "\n" + "<color=blue>" + player.name + " ¥‘¿Ã µÈæÓø¿ºÃΩ¿¥œ¥Ÿ." + "</color>";
     }
 
     private void OnPhotonPlayerDisconnected(PhotonPlayer player)
     {
-        ChatLog.text += "\n" + "<color=red>" + player.name + "?? ??????" + "</color>";
+        ChatLog.text += "\n" + "<color=red>" + player.name + " ¥‘¿Ã ≥™∞°ºÃΩ¿¥œ¥Ÿ." + "</color>";
     }
 }

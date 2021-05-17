@@ -10,6 +10,9 @@ EditorBuildSettings:
     guid: 350e3ac0fc7cddc46a7986407c1892a2
   - enabled: 1
     path: Assets/Scenes/UI Scene.unity
+    guid: 50a96e9303242f74f8c2a1abec2600ec
+  - enabled: 1
+    path: Assets/Scenes/Jinlee.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
@@ -20,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MyRoom.unity
     guid: 225fffa6ba63bbb4991628671c3c6088
+  - enabled: 1
+    path: Assets/Scenes/Myeongsin.unity
+    guid: 44573af006081bb4ba164009376b46c6
   m_configObjects: {}
