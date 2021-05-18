@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Myeongsin.unity
     guid: 44573af006081bb4ba164009376b46c6
+  - enabled: 1
+    path: Assets/Scenes/Lake.unity
+    guid: 46bae9ffe7c33894caafaf5437e4dc02
   m_configObjects: {}
