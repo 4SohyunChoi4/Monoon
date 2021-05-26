@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         else
         {
             int randomValue = Random.Range(-5, 5);
-            PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector3(randomValue, 1, 0), Quaternion.Euler(new Vector3(0, 0, 0)), 0);
+            PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector3(randomValue, 1, 0), Quaternion.Euler(new Vector3(0, 0, 0)), 0); 
         }
     }
 

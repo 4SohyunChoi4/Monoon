@@ -71,7 +71,7 @@ public class MenuController : MonoBehaviour
     {
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.maxPlayers = 5;
-        if (buildingName.Equals("疙脚包") || buildingName.Equals("柳府包"))
+        if (buildingName.Equals("疙脚包") || buildingName.Equals("柳府包") || buildingName.Equals("鉴清包"))
         {
             PhotonNetwork.JoinOrCreateRoom(buildingName, roomOptions, TypedLobby.Default);
             activeChatroomButton = true;
@@ -83,6 +83,7 @@ public class MenuController : MonoBehaviour
     {
         if(buildingName.Equals("疙脚包")) PhotonNetwork.LoadLevel("Myeongsin");
         else if(buildingName.Equals("柳府包")) PhotonNetwork.LoadLevel("Jinlee");
+        else if (buildingName.Equals("鉴清包")) PhotonNetwork.LoadLevel("Lake");
         activeChatroomButton = false;
     }
 

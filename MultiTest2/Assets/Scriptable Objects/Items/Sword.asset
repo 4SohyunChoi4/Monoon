@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  prefab: {fileID: 335207265120840333, guid: 7c515c4eb963df046b1daf2dc7103775, type: 3}
+  prefab: {fileID: 465081219089804772, guid: 6ab085de0e2e5c24481dc407e6c02a08, type: 3}
   type: 1
   description: 

@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     Button Surprise;
     Button Sit;
 
+    public GameObject Whisper;
+
     string collisionDetect;
 
     private void Awake()
@@ -105,6 +107,20 @@ public class Player : MonoBehaviour
             }
             Move();
         }
+        /*else // 다른 사람 캐릭터 클릭 시
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit))
+                {
+                    if (hit.collider.tag == "Player")
+                    {
+                        Whisper.SetActive(true);
+                    }
+                }
+            }
+        }*/
     }
 
     private void SetDestination(Vector3 dest)

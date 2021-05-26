@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1378354606103706544, guid: b09a1e04e3da2dd4c986814ecc48b6e1, type: 3}
+  prefab: {fileID: 2430801578751153557, guid: 109b384f34d0ea14f9292df5e3ea1626, type: 3}
   type: 1
   description: 
