@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
+  m_Name: Candy1
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2430801578751153557, guid: 9efe2b442e1960746840497474ef55f6, type: 3}
+  type: 0
+  description: 

@@ -17,7 +17,10 @@ public class MainPlayer : MonoBehaviour
 
     private bool isMove;
     private Vector3 destination;
-    private Vector3 direction;
+    public static Vector3 direction;
+
+    public static int noondung = 100;
+
 
     private void Awake()
     {
