@@ -13,4 +13,204 @@ MonoBehaviour:
   m_Name: Player Inventory
   m_EditorClassIdentifier: 
   savePath: /inventory.Save
-  Container: []
+  database: {fileID: 11400000, guid: e34295a9e06a9cf40976ebe8070fbd98, type: 2}
+  Container:
+    Items:
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0
+    - parent: {fileID: 0}
+      ID: -1
+      item:
+        Name: 
+        Id: -1
+      amount: 0

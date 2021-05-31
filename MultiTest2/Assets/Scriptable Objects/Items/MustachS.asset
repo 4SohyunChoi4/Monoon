@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3d812047c1aff4eb992e74a88600c8, type: 3}
   m_Name: MustachS
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7399045879612251020, guid: a33f7f038c548634dbdb7ad0d8d36856, type: 3}
-  type: 1
+  Id: 24
+  uiDisplay: {fileID: 21300000, guid: 4319649591dfbff4985fe46a8b581318, type: 3}
+  type: 0
   description: 
   restoreHealthValue: 0

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
   m_Name: Candy2
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7399045879612251020, guid: b7b0ebd00f0db8e40bafea45c673a835, type: 3}
-  type: 0
+  Id: 12
+  uiDisplay: {fileID: 21300000, guid: f5940b00526dc3040b0e9b4ce5a79e46, type: 3}
+  type: 2
   description: 

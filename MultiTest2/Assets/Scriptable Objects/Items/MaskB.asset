@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
   m_Name: MaskB
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7399045879612251020, guid: 8e98f4f3f231e094eba5382fe41b7d15, type: 3}
+  Id: 20
+  uiDisplay: {fileID: 21300000, guid: 4f30ed0fe7974cb488034b02d5c00bf0, type: 3}
   type: 1
   description: 

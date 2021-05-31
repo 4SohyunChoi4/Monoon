@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
   m_Name: Tobaco
   m_EditorClassIdentifier: 
-  prefab: {fileID: 465081219089804772, guid: 6ab085de0e2e5c24481dc407e6c02a08, type: 3}
-  type: 1
+  Id: 28
+  uiDisplay: {fileID: 21300000, guid: 092f4662629e9c44692d78702e947a9f, type: 3}
+  type: 2
   description: 

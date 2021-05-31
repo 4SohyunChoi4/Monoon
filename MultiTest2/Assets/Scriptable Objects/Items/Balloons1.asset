@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
   m_Name: Balloons1
   m_EditorClassIdentifier: 
-  prefab: {fileID: 919132149155446097, guid: d8d6eed1a8587b94188fd74121c29a4a, type: 3}
-  type: 1
+  Id: 7
+  uiDisplay: {fileID: 21300000, guid: 29e5f66df1fc1734cb90a29666f74ca5, type: 3}
+  type: 3
   description: 

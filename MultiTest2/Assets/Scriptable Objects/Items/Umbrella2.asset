@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
   m_Name: Umbrella2
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1744880948787834913, guid: 5d45ea07f1184ca49b3a6387cd58c54a, type: 3}
-  type: 1
+  Id: 30
+  uiDisplay: {fileID: 21300000, guid: b4fb278845cbf3b45a697d0ad3206db0, type: 3}
+  type: 2
   description: 

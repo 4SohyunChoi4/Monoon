@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
   m_Name: Arrow2
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8300356038284415606, guid: 6b8bbae626e7cff4f83721dae934bc88, type: 3}
-  type: 1
+  Id: 2
+  uiDisplay: {fileID: 21300000, guid: 7a9f3edd2d60f8c46b4ab7319f1ee89f, type: 3}
+  type: 3
   description: 

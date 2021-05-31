@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public MouseItem mouseItem = new MouseItem();
+
     public InventoryObjects inventory;
-    public Animator m_animator;
+    //public Animator m_animator;
 
     private void Start()
     {
-        m_animator = this.GetComponent<Animator>();
+        //m_animator = this.GetComponent<Animator>();
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        var item = other.GetComponent<Item>();
-        if (item && m_animator && m_animator.GetBool("isItem")==false)
+        var item = other.GetComponent<GroundItem>();
+        if (item)//  && m_animator && m_animator.GetBool("isItem")==false
         {
-            m_animator.SetBool("isItem", true);
+            //m_animator.SetBool("isItem", true);
            // m_animator.Play("Armature_001_pickup");
-            inventory.AddItem(item.item, 1);
+            inventory.AddItem(new Item(item.item), 1);
             inventory.Save();
             Debug.Log("인벤토리 저장됨!");
             // 일단 이동 -> 닿으면 -> 잡기 전 잡는 모션 이후 destroy가 돼야 함.
@@ -28,14 +30,14 @@ public class PlayerInventory : MonoBehaviour
     }
 
 
-    public void OnTriggerExit(Collider other)
-    {
+   // public void OnTriggerExit(Collider other)
+   // {
         //if (m_animator)
         //{
-         m_animator.SetBool("isItem", false);
-         // Debug.Log("쥽쥽이끝");
+         //m_animator.SetBool("isItem", false);
+         // Debug.Log("줍기 끝");
         //}
-    }
+  //  }
     /*
    private voidd Update()
    {
@@ -52,7 +54,8 @@ public class PlayerInventory : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        inventory.Container.Clear();
+        //inventory.Container.Items.Clear();
+        inventory.Container.Items = new InventorySlot[33];
     }
 
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
   m_Name: GlassW
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7399045879612251020, guid: a38471034f53ab349976717d32c9356a, type: 3}
+  Id: 18
+  uiDisplay: {fileID: 21300000, guid: 71e1d2190dd013d448fc8aa9f3867db4, type: 3}
   type: 1
   description: 
