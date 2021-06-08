@@ -4,7 +4,9 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - weaponTransform: {instanceID: 0}
   - inventory: {fileID: 11400000, guid: 994168599ecab644687766b2209f307e, type: 2}
+  - equipment: {fileID: 11400000, guid: 47df21a12c9d84048af2e2759ab218ff, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

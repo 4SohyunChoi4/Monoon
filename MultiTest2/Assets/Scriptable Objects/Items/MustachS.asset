@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3d812047c1aff4eb992e74a88600c8, type: 3}
   m_Name: MustachS
   m_EditorClassIdentifier: 
-  Id: 24
   uiDisplay: {fileID: 21300000, guid: 4319649591dfbff4985fe46a8b581318, type: 3}
-  type: 0
+  characterDisplay: {fileID: 3407321969083360104, guid: 342282085439bc14994d0c5e797a0603, type: 3}
+  stackable: 0
+  type: 1
   description: 
+  data:
+    Name: 
+    Id: 23
   restoreHealthValue: 0

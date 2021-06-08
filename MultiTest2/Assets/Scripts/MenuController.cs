@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
+using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] private string VersionName = "0.1";
@@ -23,13 +23,19 @@ public class MenuController : MonoBehaviour
     void Awake()
     {
         PhotonNetwork.ConnectUsingSettings(VersionName);
-        camera = Camera.main;
+        CameraMain();
+        //camera = Camera.main;
         activeChatroomButton = false;
         PhotonNetwork.playerName = FirebaseManager.user.DisplayName;
     }
-
+    
+    public void CameraMain(){
+        camera = Camera.main;
+        
+    }
     private void OnConnectedToMaster()
-    {
+    {        camera = Camera.main;
+
         PhotonNetwork.JoinLobby(TypedLobby.Default);
         Debug.Log("Connected");
     }
@@ -41,14 +47,14 @@ public class MenuController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit))
             {
-                if (!EventSystem.current.IsPointerOverGameObject()) // UI ÅÍÄ¡ ½Ã ¹ÝÀÀ ¹æÁö
+                if (!EventSystem.current.IsPointerOverGameObject()) // UI ï¿½ï¿½Ä¡ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 {
-                    if (hit.collider.tag == "building") //building¶ó´Â tag¸¦ °¡Áø ¹°Ã¼¸¦ Å¬¸¯ÇÏ¸é
+                    if (hit.collider.tag == "building") //buildingï¿½ï¿½ï¿½ tagï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½Ï¸ï¿½
                     {
-                        buildingName = hit.collider.gameObject.name;// ÇØ´ç ¹°Ã¼ÀÇ ÀÌ¸§À» °¡Á®¿È
+                        buildingName = hit.collider.gameObject.name;// ï¿½Ø´ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                         Debug.Log(buildingName);
                         activeChatroomButton = true;
-                        chatRoomButtonText.text = buildingName + " ÀÔÀåÇÏ±â";
+                        chatRoomButtonText.text = buildingName + " ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½";
                     }
                     else if(hit.collider.tag == "road")
                     {
@@ -71,32 +77,34 @@ public class MenuController : MonoBehaviour
     {
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.maxPlayers = 5;
-        if (buildingName.Equals("¸í½Å°ü") || buildingName.Equals("Áø¸®°ü") || buildingName.Equals("¼øÇå°ü"))
+        if (buildingName.Equals("ï¿½ï¿½ï¿½Å°ï¿½") || buildingName.Equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½") || buildingName.Equals("ï¿½ï¿½ï¿½ï¿½ï¿½"))
         {
             PhotonNetwork.JoinOrCreateRoom(buildingName, roomOptions, TypedLobby.Default);
             activeChatroomButton = true;
-            chatRoomButtonText.text = "Á¢¼ÓÁßÀÔ´Ï´Ù..";
+            chatRoomButtonText.text = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½..";
         }
+        else if (buildingName.Equals("ï¿½Ð»ï¿½È¸ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)"))
+        SceneManager.LoadScene("Shop");
     }
 
     private void OnJoinedRoom()
     {
-        if(buildingName.Equals("¸í½Å°ü")) PhotonNetwork.LoadLevel("Myeongsin");
-        else if(buildingName.Equals("Áø¸®°ü")) PhotonNetwork.LoadLevel("Jinlee");
-        else if (buildingName.Equals("¼øÇå°ü")) PhotonNetwork.LoadLevel("Lake");
+        if(buildingName.Equals("ï¿½ï¿½ï¿½Å°ï¿½")) PhotonNetwork.LoadLevel("Myeongsin");
+        else if(buildingName.Equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")) PhotonNetwork.LoadLevel("Jinlee");
+        else if (buildingName.Equals("ï¿½ï¿½ï¿½ï¿½ï¿½")) PhotonNetwork.LoadLevel("Lake");
         activeChatroomButton = false;
     }
 
-    /*private void Start() // °ÔÀÓ ½ÃÀÛ ½Ã ÇÑ ¹ø È£Ãâ
+    /*private void Start() // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½
     {
-        UsernameMenu.SetActive(true); // UsernameMeun ÆÐ³Î È°¼ºÈ­
+        UsernameMenu.SetActive(true); // UsernameMeun ï¿½Ð³ï¿½ È°ï¿½ï¿½È­
     }*/
 
-    /*(public void ChanseUserNameInput() // UsernameInput ¼³Á¤
+    /*(public void ChanseUserNameInput() // UsernameInput ï¿½ï¿½ï¿½ï¿½
     {
-        if (UsernameInput.text.Length >= 2) // »ç¿ëÀÚ°¡ UsernameÀ» µÎ ±ÛÀÚ ÀÌ»ó ÀÔ·Â ½Ã
+        if (UsernameInput.text.Length >= 2) // ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ Usernameï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½
         {
-            StartButton.SetActive(true); // ½ÃÀÛ ¹öÆ° È°¼ºÈ­
+            StartButton.SetActive(true); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° È°ï¿½ï¿½È­
         }
         else
         {

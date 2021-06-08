@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd69408a844f2d640b4a16a02c13019d, type: 3}
   m_Name: Noondung
   m_EditorClassIdentifier: 
-  Id: 0
   uiDisplay: {fileID: 21300000, guid: 3de31f0eb97508c48bcbea7a2897448e, type: 3}
-  type: 2
+  characterDisplay: {fileID: 6296890216530242050, guid: ace99052c027e8c4ba113310d460471e, type: 3}
+  stackable: 1
+  type: 5
   description: 
+  data:
+    Name: 
+    Id: 24

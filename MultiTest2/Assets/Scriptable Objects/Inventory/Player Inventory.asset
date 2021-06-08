@@ -12,204 +12,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132d242a351371d46886a3bc9ebae189, type: 3}
   m_Name: Player Inventory
   m_EditorClassIdentifier: 
-  savePath: /inventory.Save
+  savePath: /inventory.save
   database: {fileID: 11400000, guid: e34295a9e06a9cf40976ebe8070fbd98, type: 2}
+  type: 0
   Container:
-    Items:
-    - parent: {fileID: 0}
-      ID: -1
+    Slots:
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
-      item:
-        Name: 
-        Id: -1
-      amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
         Id: -1

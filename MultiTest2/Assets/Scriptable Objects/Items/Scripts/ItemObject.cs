@@ -19,19 +19,24 @@ public enum Attributes
    
 }
 */
-public abstract class ItemObject : ScriptableObject
+[CreateAssetMenu(fileName ="New Item", menuName = "Inventory System/Items/item")]
+public class ItemObject : ScriptableObject
 {
-    public int Id;
     public Sprite uiDisplay;
+
+    public GameObject characterDisplay;
+
+    public bool stackable = true;
     public ItemType type;
     [TextArea(15, 20)]
     public string description;
+    public Item data = new Item();
 }
 [System.Serializable]
 public class Item
 {
     public string Name;
-    public int Id;
+    public int Id = -1;
     public Item()
     {
         Name = "";
@@ -40,6 +45,6 @@ public class Item
     public Item(ItemObject item)
     {
         Name = item.name;
-        Id = item.Id;
+        Id = item.data.Id;
     }
 }

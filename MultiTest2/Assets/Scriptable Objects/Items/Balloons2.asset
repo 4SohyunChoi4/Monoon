@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
   m_Name: Balloons2
   m_EditorClassIdentifier: 
-  Id: 8
   uiDisplay: {fileID: 21300000, guid: 4f11af372ffb37e4c98a0973945417ad, type: 3}
-  type: 3
+  characterDisplay: {fileID: 3407321969083360104, guid: 78dbd4ddd44f2a945b712e63a980fb1d, type: 3}
+  stackable: 0
+  type: 2
   description: 
+  data:
+    Name: 
+    Id: 7

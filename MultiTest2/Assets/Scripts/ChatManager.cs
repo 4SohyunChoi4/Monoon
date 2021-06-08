@@ -195,7 +195,7 @@ public class ChatManager : MonoBehaviour
         foreach (PhotonPlayer p in PhotonNetwork.playerList)
         {
             if(!p.NickName.Equals(PhotonNetwork.playerName)) // 챗 리스트에 내 닉네임을 제외한 접속해있는 플레이어의 닉네임 추가
-             dropdownOptions.Add(p.NickName);
+            dropdownOptions.Add(p.NickName);
         }
         ChatList.AddOptions(dropdownOptions);
     }

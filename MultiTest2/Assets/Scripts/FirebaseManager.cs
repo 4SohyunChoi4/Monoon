@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Firebase;
+using Firebase.Database;
 using Firebase.Auth;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,7 @@ public class FirebaseManager : MonoBehaviour
     [Header("Firebase")]
     public FirebaseAuth auth;
     public static FirebaseUser user;
+    public DatabaseReference DBreference;
     [Space(5f)]
 
     [Header("Login References")]
@@ -41,6 +43,8 @@ public class FirebaseManager : MonoBehaviour
     private TMP_InputField ResetPWEmail;
     [SerializeField]
     private TMP_Text resetPWOutputText;
+
+   // [SerializeField] public TMP_InputField myNoondungText;
 
 
     private void Awake()
@@ -80,7 +84,7 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    //ì¸ì¦ì´ ì„¤ì •ëœ ì§í›„ íŒŒì´ì–´ë² ì´ìŠ¤ í˜¸ì¶œ í™•ì¸í•œë‹´ì— ìžë™ë¡œê·¸ì¸ ì´ˆê¸°í™”
+    //ÀÎÁõÀÌ ¼³Á¤µÈ Á÷ÈÄ ÆÄÀÌ¾îº£ÀÌ½º È£Ãâ È®ÀÎÇÑ´ã¿¡ ÀÚµ¿·Î±×ÀÎ ÃÊ±âÈ­
     private void InitializeFirebase()
     {
         auth = FirebaseAuth.DefaultInstance;
@@ -88,19 +92,20 @@ public class FirebaseManager : MonoBehaviour
 
         auth.StateChanged += AuthStateChanged;
         AuthStateChanged(this, null);
+        DBreference = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
     private IEnumerator CheckAutoLogin()
     {
-        //ì™œ ë„£ëŠ”ì§€ ëª¨ë¥´ì§€ë§Œ ì•ˆë„£ìœ¼ë©´ ì—ëŸ¬ë‚  ë•Œ ìžˆìŒ
+        //¿Ö ³Ö´ÂÁö ¸ð¸£Áö¸¸ ¾È³ÖÀ¸¸é ¿¡·¯³¯ ¶§ ÀÖÀ½
         yield return new WaitForEndOfFrame();
 
-        //ê¸°ë‹¤ë¦° í›„ì— ìœ ì €ê°€ ìžˆìœ¼ë©´ ë¦¬ë¡œë“œí•œë‹¤ ë™ê¸°í™”í•œë‹¤.
+        //±â´Ù¸° ÈÄ¿¡ À¯Àú°¡ ÀÖÀ¸¸é ¸®·ÎµåÇÑ´Ù µ¿±âÈ­ÇÑ´Ù.
         if(user != null)
         {
             var reloadUserTask = user.ReloadAsync();
 
-            //ì™„ë£Œë  ë•Œ ê¹Œì§€ ê¸°ë‹¤ë¦°ë‹¤(ìžë™ë¡œê·¸ì¸ì´)
+            //¿Ï·áµÉ ¶§ ±îÁö ±â´Ù¸°´Ù(ÀÚµ¿·Î±×ÀÎÀÌ)
             yield return new WaitUntil(predicate: () => reloadUserTask.IsCompleted);
 
             AutoLogin();
@@ -154,10 +159,32 @@ public class FirebaseManager : MonoBehaviour
         }
     }
     
+    
     public void ClearOutputs()
     {
         loginOutputText.text = "";
         registerOutputText.text = "";
+        resetPWOutputText.text = "";
+    }
+
+    public void ClearLoginFeilds()
+    {
+        loginEmail.text="";
+        loginPassword.text="";
+    }
+    
+    public void ClearRegisterFeilds()
+    {
+        registerUsername.text = "";
+        registerEmail.text = "";
+        registerPassword.text = "";
+        registerConfirmPassword.text = "";
+    }
+
+    private IEnumerator RemoveOutputs()
+    {
+        yield return new WaitForSeconds(3f);
+        ClearOutputs();
     }
 
     public void LoginButton()
@@ -184,30 +211,31 @@ public class FirebaseManager : MonoBehaviour
             FirebaseException firebaseException = (FirebaseException)loginTask.Exception.GetBaseException();
             AuthError error = (AuthError)firebaseException.ErrorCode;
 
-            string output = "ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.\në‹¤ì‹œ ì‹œë„í•´ ì£¼ì„¸ìš”.";
+            string output = "¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ýÇß½À´Ï´Ù.\n´Ù½Ã ½ÃµµÇØ ÁÖ¼¼¿ä.";
 
             switch (error)
             {
                 case AuthError.MissingEmail:
-                    output = "ì´ë©”ì¼ì„ ìž…ë ¥í•´ ì£¼ì„¸ìš”.";
+                    output = "ÀÌ¸ÞÀÏÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.";
                     break;
                 case  AuthError.MissingPassword:
-                    output = "ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•´ ì£¼ì„¸ìš”.";
+                    output = "ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.";
                     break;
                 case  AuthError.InvalidEmail:
-                    output = "ë“±ë¡ë˜ì§€ ì•Šì€ ì´ë©”ì¼ìž…ë‹ˆë‹¤.";
+                    output = "µî·ÏµÇÁö ¾ÊÀº ÀÌ¸ÞÀÏÀÔ´Ï´Ù.";
                     break;
                 case  AuthError.WrongPassword:
-                    output = "ë¹„ë°€ë²ˆí˜¸ë¥¼ ë‹¤ì‹œ ìž…ë ¥í•´ ì£¼ì„¸ìš”.";
+                    output = "ºñ¹Ð¹øÈ£¸¦ ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.";
                     break;
                 case AuthError.UserNotFound:
-                    output = "ë“±ë¡ë˜ì§€ ì•Šì€ ì‚¬ìš©ìž ìž…ë‹ˆë‹¤.";
+                    output = "µî·ÏµÇÁö ¾ÊÀº »ç¿ëÀÚ ÀÔ´Ï´Ù.";
                     break;
             }
             loginOutputText.text = output;
+            StartCoroutine("RemoveOutputs");
 
         }
-        //ë¬¸ì œ ì—†ìœ¼ë©´ ì•„ëž˜ ì§„í–‰
+        //¹®Á¦ ¾øÀ¸¸é ¾Æ·¡ ÁøÇà
         else{
             if (user.IsEmailVerified)
             {
@@ -229,11 +257,13 @@ public class FirebaseManager : MonoBehaviour
         
         if(_username == "")
         {
-            registerOutputText.text = "ì´ë¦„ì„ ìž…ë ¥í•´ ì£¼ì„¸ìš”.";
+            registerOutputText.text = "ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.";
+            StartCoroutine("RemoveOutputs");
         }
         else if(_password != _confirmPassword)
         {
-            registerOutputText.text = "ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
+            registerOutputText.text = "ºñ¹Ð¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.";
+            StartCoroutine("RemoveOutputs");
         }
         //ok
         else{
@@ -245,30 +275,31 @@ public class FirebaseManager : MonoBehaviour
             {
                 FirebaseException firebaseException = (FirebaseException)registerTask.Exception.GetBaseException();
                 AuthError error = (AuthError)firebaseException.ErrorCode;
-                string output = "ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì‹œë„í•´ ì£¼ì„¸ìš”.";
+                string output = "¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ýÇß½À´Ï´Ù. ´Ù½Ã ½ÃµµÇØ ÁÖ¼¼¿ä.";
 
                 switch (error)
                 {
                     case AuthError.InvalidEmail:
-                        output = "ìž˜ëª»ëœ ì´ë©”ì¼ì„ ìž…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.";
+                        output = "Àß¸øµÈ ÀÌ¸ÞÀÏÀ» ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.";
                         break;
                     case AuthError.EmailAlreadyInUse:
-                        output = "ì´ë¯¸ ì‚¬ìš©ì¤‘ì¸ ì´ë©”ì¼ìž…ë‹ˆë‹¤.";
+                        output = "ÀÌ¹Ì »ç¿ëÁßÀÎ ÀÌ¸ÞÀÏÀÔ´Ï´Ù.";
                         break;
                     case AuthError.WeakPassword:
-                        output = "ë³´ì•ˆì— ì·¨ì•½í•œ ë¹„ë°€ë²ˆí˜¸ìž…ë‹ˆë‹¤.";
+                        output = "º¸¾È¿¡ Ãë¾àÇÑ ºñ¹Ð¹øÈ£ÀÔ´Ï´Ù.";
                         break;
                     case AuthError.MissingEmail:
-                        output = "ì´ë©”ì¼ì„ ìž…ë ¥í•´ ì£¼ì„¸ìš”.";
+                        output = "ÀÌ¸ÞÀÏÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.";
                         break;
                     case AuthError.MissingPassword:
-                        output = "ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•´ ì£¼ì„¸ìš”.";
+                        output = "ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.";
                         break;
                 }
                 registerOutputText.text = output;
+                StartCoroutine("RemoveOutputs");
             }
 
-            //ìœ„ì˜ ì •ë³´ë¥¼ ì˜³ê²Œ ìž…ë ¥í•œ ê²½ìš° ë‹‰ë„¤ìž„ ì„¤ì •í•˜ê¸°
+            //À§ÀÇ Á¤º¸¸¦ ¿Ç°Ô ÀÔ·ÂÇÑ °æ¿ì ´Ð³×ÀÓ ¼³Á¤ÇÏ±â
             else
             {
                 UserProfile profile = new UserProfile
@@ -284,14 +315,14 @@ public class FirebaseManager : MonoBehaviour
                 yield return new WaitUntil(predicate: () => defaultUserTask.IsCompleted);
                 
 
-                //ìœ ì €ì •ë³´ì— ì–´ë–¤ ë¬¸ì œê°€ ìžˆìœ¼ë©´
+                //À¯ÀúÁ¤º¸¿¡ ¾î¶² ¹®Á¦°¡ ÀÖÀ¸¸é
                 if(defaultUserTask.Exception != null)
                 {
-                    //ê°€ìž¥ ë¨¼ì €, ìœ ì €í”„ë¡œí•„ì„ ì‚­ì œí•œë‹¤.
+                    //°¡Àå ¸ÕÀú, À¯ÀúÇÁ·ÎÇÊÀ» »èÁ¦ÇÑ´Ù.
                     user.DeleteAsync();
                     FirebaseException firebaseException = (FirebaseException)defaultUserTask.Exception.GetBaseException();
                     AuthError error = (AuthError)firebaseException.ErrorCode;
-                    string output = "ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì‹œë„í•´ ì£¼ì„¸ìš”.";
+                    string output = "¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ýÇß½À´Ï´Ù. ´Ù½Ã ½ÃµµÇØ ÁÖ¼¼¿ä.";
 
                     switch (error)
                     {
@@ -299,13 +330,14 @@ public class FirebaseManager : MonoBehaviour
                             output = "Update User Canceled.";
                             break;
                         case AuthError.SessionExpired:
-                            output = "ì„¸ì…˜ì´ ë§Œë£Œë˜ì—ˆìŠµë‹ˆë‹¤.";
+                            output = "¼¼¼ÇÀÌ ¸¸·áµÇ¾ú½À´Ï´Ù.";
                             break;
                     }
                     registerOutputText.text = output;
+                    StartCoroutine("RemoveOutputs");
                 }
 
-                //ìœ ì € ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸°ì— ë¬¸ì œê°€ ì—†ìœ¼ë©´
+                //À¯Àú Á¤º¸ ºÒ·¯¿À±â¿¡ ¹®Á¦°¡ ¾øÀ¸¸é
                 else
                 {
                     Debug.Log($"Firebase User Created Successfully: {user.DisplayName} ({user.UserId})");
@@ -313,15 +345,33 @@ public class FirebaseManager : MonoBehaviour
 
                     //todo: send verification email
                     StartCoroutine(SendVerificationEmail());
+                    //StartCoroutine(UpdateUsernameDatabase($"{user.DisplayName}"));
                 }
             }
         }
     }
 
-    //ì´ë©”ì¼ ì¸ì¦ ë§Œë“¤ê¸°
+    //À¯Àú³×ÀÓ µ¥ÀÌÅÍº£ÀÌ½º
+    /*
+    private IEnumerator UpdateUsernameDatabase(string _username)
+    {
+        var DBTask = DBreference.Child("users").Child(user.UserId).Child("username").SetValueAsync(_username);
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Database username is now updated
+        }
+    }
+    */  
+    //ÀÌ¸ÞÀÏ ÀÎÁõ ¸¸µé±â
     private IEnumerator SendVerificationEmail()
     {
-        //ìœ ì € ìžˆëŠ”ì§€ ë¨¼ì € í™•ì¸-> ê¸°ë‹¤ë¦¼
+        //À¯Àú ÀÖ´ÂÁö ¸ÕÀú È®ÀÎ-> ±â´Ù¸²
         if(user != null)
         {
             
@@ -329,31 +379,31 @@ public class FirebaseManager : MonoBehaviour
 
             yield return new WaitUntil(predicate: () => emailTask.IsCompleted);
 
-            //ì˜¤ë¥˜ìžˆìœ¼ë©´
+            //¿À·ùÀÖÀ¸¸é
             if(emailTask.Exception != null)
             {
                 FirebaseException firebaseException = (FirebaseException)emailTask.Exception.GetBaseException();
                 AuthError error = (AuthError)firebaseException.ErrorCode;
 
-                string output = "ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì‹œë„í•´ ì£¼ì„¸ìš”!";
+                string output = "¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ýÇß½À´Ï´Ù. ´Ù½Ã ½ÃµµÇØ ÁÖ¼¼¿ä!";
 
                 switch(error)
                 {
                     case AuthError.Cancelled:
-                        output = "ì¸ì¦ì´ ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.";
+                        output = "ÀÎÁõÀÌ Ãë¼ÒµÇ¾ú½À´Ï´Ù.";
                         break;
                     case AuthError.InvalidRecipientEmail:
-                        output = "í™•ì¸ë˜ì§€ ì•ŠëŠ” ì´ë©”ì¼ìž…ë‹ˆë‹¤.";
+                        output = "È®ÀÎµÇÁö ¾Ê´Â ÀÌ¸ÞÀÏÀÔ´Ï´Ù.";
                         break;
                     case AuthError.TooManyRequests:
-                        output = "ì´ë¯¸ ë©”ì¼ì´ ë°œì†¡ë˜ì—ˆìŠµë‹ˆë‹¤.";
+                        output = "ÀÌ¹Ì ¸ÞÀÏÀÌ ¹ß¼ÛµÇ¾ú½À´Ï´Ù.";
                         break;
                 }
                 AUIManager.instance.AwaitVerification(false, user.Email, output);
             }
             else{
                 AUIManager.instance.AwaitVerification(true, user.Email, null);
-                //outputí‘œì‹œì•ˆë¨. true=ì´ë©”ì¼ ë³´ë‚´ì¡ŒìŒ
+                //outputÇ¥½Ã¾ÈµÊ. true=ÀÌ¸ÞÀÏ º¸³»Á³À½
                 Debug.Log("Email sent Successfully");
             }
         }
@@ -366,7 +416,8 @@ public class FirebaseManager : MonoBehaviour
     {
         if(_email == "@sookmyung.ac.kr")
         {
-            resetPWOutputText.text = "ìˆ™ëª… ì´ë©”ì¼ì˜ ì•„ì´ë””ë¥¼ ìž…ë ¥í•´ ì£¼ì„¸ìš”.";
+            resetPWOutputText.text = "¼÷¸í ÀÌ¸ÞÀÏÀÇ ¾ÆÀÌµð¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.";
+            StartCoroutine("RemoveOutputs");
         }
         
 
@@ -381,52 +432,59 @@ public class FirebaseManager : MonoBehaviour
                 
             } else if (resetTask.IsFaulted) {
                 Debug.Log("unregisterd");
-                resetPWOutputText.text = "ë“±ë¡ë˜ì§€ ì•Šì€ ê³„ì •ìž…ë‹ˆë‹¤.\nìˆ™ëª… ì´ë©”ì¼ ê³„ì •ì„ í™•ì¸í•´ ì£¼ì„¸ìš”.";
+                resetPWOutputText.text = "µî·ÏµÇÁö ¾ÊÀº °èÁ¤ÀÔ´Ï´Ù.\n¼÷¸í ÀÌ¸ÞÀÏ °èÁ¤À» È®ÀÎÇØ ÁÖ¼¼¿ä.";
             } else if (resetTask.IsCompleted) {
                 resetPWOutputText.text = "";
                 AUIManager.instance.AwaitVerification(true, _email, null);
                 Debug.Log("Reset passowrd Email sent Successfully");
             }
             
-            //ë“±ë¡ëœ ì´ë©”ì¼ ì•„ë‹ ê²½ìš° IsFaulted ë°˜í™˜
-            //
-            /*
-            if(resetTask.Exception != null)
-            {
-                
-                if(resetTask.IsFaulted) resetPWOutputText.text = "ë“±ë¡ë˜ì§€ ì•Šì€ ê³„ì •ìž…ë‹ˆë‹¤.";
-
-                FirebaseException firebaseException = (FirebaseException)resetTask.Exception.GetBaseException();
-                AuthError error = (AuthError)firebaseException.ErrorCode;
-
-                string output = "ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì‹œë„í•´ ì£¼ì„¸ìš”!";
-                
-                switch(error)
-                {
-                    case AuthError.Cancelled:
-                        output = "ì¸ì¦ì´ ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.";
-                        break;
-                    case AuthError.EmailAlreadyInUse:
-                        output = "í™•ì¸ë˜ì§€ ì•ŠëŠ” ì´ë©”ì¼ìž…ë‹ˆë‹¤.";
-                        break;
-                    case AuthError.TooManyRequests:
-                        output = "ì´ë¯¸ ë©”ì¼ì´ ë°œì†¡ë˜ì—ˆìŠµë‹ˆë‹¤.";
-                        break;
-                }
-
-                AUIManager.instance.AwaitVerification(false, _email, output);
-                    
-               
-            }
-                else {
-                    AUIManager.instance.AwaitVerification(true, _email, null);
-                    Debug.Log("Reset passowrd Email sent Successfully");
-                }
-                
-            }
-            */
       
         
         }           
-    }}
+    }
+
+/*
+    public void SaveDataButton()
+    {
+        //StartCoroutine(UpdateUsernameDatabase(registerUsername.text));
+        
+       // StartCoroutine(UpdateMyNoondung(int.Parse(myNoondungText.text)));
+    }
+*/
+    private IEnumerator UpdateMyNoondung(int _noondung)
+    {
+        var DBTask = DBreference.Child("users").Child(user.UserId).Child("myNoondung").SetValueAsync(_noondung);
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else{
+            //noondung is now updated
+        }
+    }
+
+    //·Î±×¾Æ¿ô
+    public void SignoutButton()
+    {
+        Debug.Log($"Click Signed Out");
+        auth.SignOut();
+        Debug.Log($"Signed Out");
+        SceneManager.LoadScene("Auth Scene");
+        ClearRegisterFeilds();
+        ClearLoginFeilds();
+    }
+
+    //°èÁ¤Å»Åð
+    public void DeleteUser()
+    {   
+        Debug.Log($"Click Å»ÅðÇÏ±â");
+        FirebaseManager.instance.auth.CurrentUser.DeleteAsync();
+        Debug.Log($"Å»Åð: ${FirebaseManager.user.DisplayName}"); //¾Æ¸¶µµ null
+        SceneManager.LoadScene("Auth Scene");
+
+    }
+}
 

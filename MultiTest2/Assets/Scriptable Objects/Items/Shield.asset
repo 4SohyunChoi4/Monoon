@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
-  Id: 25
   uiDisplay: {fileID: 21300000, guid: 24637b0d9871a1c4abda30dd6eb01a40, type: 3}
-  type: 3
+  characterDisplay: {fileID: 3407321969083360104, guid: ef5f77abe740ae94a9637e7409d2beed, type: 3}
+  stackable: 0
+  type: 2
   description: 
+  data:
+    Name: 
+    Id: 25

@@ -11,7 +11,7 @@ public class MainPlayer : MonoBehaviour
 
     public bool IsGrounded = false;
 
-    //³ª°æ´Ô ÄÚµå Ãß°¡ »çÇ×
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½
     private Camera camera;
     private Animator animator;
 
@@ -21,13 +21,23 @@ public class MainPlayer : MonoBehaviour
 
     public static int noondung = 100;
 
-
+    void OnLevelWasLoaded(int sceneIndex)
+    {
+        Debug.Log(sceneIndex);
+        if( sceneIndex == 1) CameraMain();
+    }	
     private void Awake()
     {
-        //³ª°æ´Ô ÄÚµå
-        camera = Camera.main;
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
+        //camera = Camera.main;
+        CameraMain();
         animator = GetComponent<Animator>();
         animator.applyRootMotion = true;
+    }
+
+    public void CameraMain(){
+        camera = Camera.main;
+        Debug.Log("cameraMain");
     }
 
     private void Update()
@@ -35,11 +45,12 @@ public class MainPlayer : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             RaycastHit hit;
-            //Debug.Log("Å¬¸¯!");
+            //Debug.Log("Å¬ï¿½ï¿½!");
             if (Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit))
             {
-                if (!EventSystem.current.IsPointerOverGameObject()) // UI ÅÍÄ¡ ½Ã ÀÌµ¿ ¹æÁö
-                    if (hit.collider.tag == "road") //road¶ó´Â tag¸¦ °¡Áø ¹°Ã¼¸¦ Å¬¸¯ÇØ¾ß Å¬¸¯ À§Ä¡¸¦ ¸ñÀûÁö·Î ÀÎ½Ä
+            
+                if (!EventSystem.current.IsPointerOverGameObject()) // UI ï¿½ï¿½Ä¡ ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
+                    if (hit.collider.tag == "road") //roadï¿½ï¿½ï¿½ tagï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½Ø¾ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î½ï¿½
                     { SetDestination(hit.point); }
             }
         }
@@ -70,9 +81,18 @@ public class MainPlayer : MonoBehaviour
         }
     }
 
+      //Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+    void FreezeRotation()
+    {
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    }
+    void FixedUpdate()
+    {
+        FreezeRotation();
+    }
     public void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("Ãæµ¹!");
+        //Debug.Log("ï¿½æµ¹!");
     }
 
  

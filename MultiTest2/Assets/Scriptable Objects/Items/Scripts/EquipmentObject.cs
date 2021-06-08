@@ -8,6 +8,6 @@ public class EquipmentObject : ItemObject
 
     public void Awake()
     {
-        type = ItemType.Face;  
+        type = ItemType.Face;
     }
 }

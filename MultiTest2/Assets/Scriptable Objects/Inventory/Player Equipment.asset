@@ -10,38 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 132d242a351371d46886a3bc9ebae189, type: 3}
-  m_Name: 
+  m_Name: Player Equipment
   m_EditorClassIdentifier: 
-  savePath: 
+  savePath: /equipment.save
   database: {fileID: 11400000, guid: e34295a9e06a9cf40976ebe8070fbd98, type: 2}
+  type: 1
   Container:
-    Items:
-    - parent: {fileID: 0}
-      ID: -1
+    Slots:
+    - AllowedItems: 00000000
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 01000000
       item:
         Name: 
         Id: -1
       amount: 0
-    - parent: {fileID: 0}
-      ID: 6
+    - AllowedItems: 02000000
       item:
-        Name: Balloon2
-        Id: 6
+        Name: Arrow2
+        Id: 1
       amount: 1
-    - parent: {fileID: 0}
-      ID: 8
+    - AllowedItems: 0300000002000000
       item:
-        Name: Balloons2
-        Id: 8
-      amount: 1
-    - parent: {fileID: 0}
-      ID: -1
+        Name: 
+        Id: -1
+      amount: 0
+    - AllowedItems: 04000000
       item:
         Name: 
         Id: -1

@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
   m_Name: GlassW
   m_EditorClassIdentifier: 
-  Id: 18
   uiDisplay: {fileID: 21300000, guid: 71e1d2190dd013d448fc8aa9f3867db4, type: 3}
-  type: 1
+  characterDisplay: {fileID: 3407321969083360104, guid: ce7938a14e73f39468f1ef451104e3d6, type: 3}
+  stackable: 0
+  type: 2
   description: 
+  data:
+    Name: 
+    Id: 17
