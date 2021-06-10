@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
-  m_Name: ShieldS
+  m_Name: Candy6
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 27d85e92297364c49a3c5758d21894c4, type: 3}
-  characterDisplay: {fileID: 3407321969083360104, guid: 44e3aca8059be004f809cd32722e26ca, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 6dc04d3c820d6b84c94828a9c725594c, type: 3}
+  characterDisplay: {fileID: 3910157267168944549, guid: 89d300e63829587478e8194984aab9a3, type: 3}
   stackable: 0
   type: 2
   description: 
   data:
     Name: 
-    Id: 30
+    Id: 15

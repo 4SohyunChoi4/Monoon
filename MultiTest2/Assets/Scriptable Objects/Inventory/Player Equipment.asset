@@ -29,9 +29,9 @@ MonoBehaviour:
       amount: 0
     - AllowedItems: 02000000
       item:
-        Name: Arrow2
-        Id: 1
-      amount: 1
+        Name: 
+        Id: -1
+      amount: 0
     - AllowedItems: 0300000002000000
       item:
         Name: 

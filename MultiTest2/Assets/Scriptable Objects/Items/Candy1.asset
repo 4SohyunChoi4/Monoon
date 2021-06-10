@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef0a44773cde604597a9a2417cda95c, type: 3}
   m_Name: Candy1
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 2cffbd0c764d05d45a3dbf6cca53b539, type: 3}
+  uiDisplay: {fileID: 21300000, guid: b616978cf461ab14fab3431fe928ebef, type: 3}
   characterDisplay: {fileID: 3407321969083360104, guid: 051dcb5b600659d4698ddd07c6a6925f, type: 3}
   stackable: 0
   type: 2
   description: 
   data:
     Name: 
-    Id: 11
+    Id: 10

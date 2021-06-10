@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Crown
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 4acdd34031037fc40b2d83aaacbc750d, type: 3}
-  characterDisplay: {fileID: 3407321969083360104, guid: f9bdda1f6d2105c46817af495262fd78, type: 3}
+  characterDisplay: {fileID: 2337171116077886504, guid: 46bc47fc3663c9148b8464dee9c8750a, type: 3}
   stackable: 0
   type: 0
   description: 
   data:
     Name: 
-    Id: 15
+    Id: 18
