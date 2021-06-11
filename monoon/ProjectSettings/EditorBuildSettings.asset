@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Auth Scene.unity
+    guid: 8adfed69781324b45ad1831b1a402852
+  - enabled: 1
+    path: Assets/Scenes/UI Scene.unity
+    guid: 86e472d6962a26140b652df6196a743b
+  - enabled: 1
+    path: Assets/Scenes/Jinlee.unity
+    guid: ad448506b1456504faf0a88f1af0c123
+  - enabled: 1
+    path: Assets/Scenes/Lake.unity
+    guid: 46bae9ffe7c33894caafaf5437e4dc02
+  - enabled: 1
+    path: Assets/Scenes/library.unity
+    guid: ec0cd8d8a72d98d47b236030152d1009
+  - enabled: 1
+    path: Assets/Scenes/MyRoom.unity
+    guid: 225fffa6ba63bbb4991628671c3c6088
+  - enabled: 1
+    path: Assets/Scenes/Saeheem.unity
+    guid: e65c5980f50a02b489353128adc425e2
+  - enabled: 1
+    path: Assets/Scenes/Soonhun.unity
+    guid: 8765f8f7cac59cc41bb8eb87caf9e1bf
+  m_configObjects: {}

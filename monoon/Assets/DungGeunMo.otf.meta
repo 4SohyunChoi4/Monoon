@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f7e3f5e0a10d4e24cb9581bd6072e77c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - DungGeunMo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c3ff528947a223f49be284790066c2dd, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
